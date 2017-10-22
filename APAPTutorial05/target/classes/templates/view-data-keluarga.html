@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+
+
+<title>Pratt - Free Bootstrap 3 Theme</title>
+
+<link th:href="@{/css/bootstrap.css}" rel="stylesheet" />
+<link th:href="@{/css/main.css}" rel="stylesheet" />
+
+</head>
+
+<body data-spy="scroll" data-offset="0" data-target="#navigation">
+
+
+	<div id="navigation" class="navbar navbar-default navbar-fixed-top">
+		<div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse"
+					data-target=".navbar-collapse">
+					<span class="icon-bar"></span> <span class="icon-bar"></span> <span
+						class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="#"><b>Si Kependudukan</b></a>
+			</div>
+			<div class="navbar-collapse collapse">
+				<ul class="nav navbar-nav">
+					<li class="active"><a href="#home" class="smothscroll">Home</a></li>
+					<li><a href="" class="smothscroll">Cari Data</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+
+
+	<div id="intro">
+		<div class="container">
+			<div class="row centered">
+				<h1>Sistem Informasi Kependudukan Online Provinsi DKI Jakarta</h1>
+				<p>Selamat datang di Sistem Informasi Kependudukan Online
+					Provinsi DKI Jakarta</p>
+				<br /> <br />
+				<hr />
+
+				<div class="col-lg-12">
+
+					<h1 th:text="'Lihat Data Keluarga - ' + ${keluarga.nomor_kk}"></h1>
+					<div th:if="${keluarga.is_tidak_berlaku} == 1">
+						<h4 style="color: red;"><strong>Nomor KK sudah tidak berlaku karena semua anggota keluarga telah wafat</strong></h4>
+					</div>
+					<h4 th:text="'NKK : ' + ${keluarga.nomor_kk}">Penduduk NIK</h4>
+					<h4 th:text="'Alamat : ' + ${keluarga.alamat}">Penduduk NIK</h4>
+					<h4 th:text="'RT/RW : ' + ${keluarga.rt} + '/' + ${keluarga.rw} ">Penduduk
+						NIK</h4>
+					<h4 th:text="'Kelurahan/Desa : ' + ${alamat.nama_kelurahan}">Penduduk
+						NIK</h4>
+					<h4 th:text="'Kecamatan : ' + ${alamat.nama_kecamatan}">Penduduk
+						NIK</h4>
+					<h4 th:text="'Kota : ' + ${alamat.nama_kota}">Penduduk NIK</h4>
+					
+					<table class="table ">
+    					<thead>
+    						<tr>
+    							<th>No.</th>
+    							<th>Nama Lengkap</th>
+    							<th>NIK</th>
+    							<th>Jenis Kelamin</th>
+    							<th>Tempat Lahir</th>
+    							<th>Tanggal Lahir</th>
+    							<th>Agama</th>
+    							<th>Pekerjaan</th>
+    							<th>Status Perkawinan</th>
+    							<th>Status dalam keluarga</th>
+    							<th>Kewarganegaraan</th>
+    						
+    						</tr>
+    					</thead>
+					    <tbody >
+					      
+					     
+						
+					      <tr  class="success" th:each="anggota, iterationStatus: ${anggota}">
+
+					        <td th:text="${iterationStatus.count}">No. 1</td>
+			       	<td th:text="${anggota.nama}">Nama</td>
+			       	<td th:text="${anggota.nik}">NIK</td>
+			       	<td th:text="${anggota.jenis_kelamin} == 0 ? 'Laki-laki' : 'Perempuan'">Jenis Kelamin</td>
+			       	<td th:text="${anggota.tempat_lahir}">Tempat Lahir</td>
+			       	<td th:text="${anggota.tanggal_lahir}">Tanggal Lahir</td>
+			       	<td th:text="${anggota.agama}">Agama</td>
+			       	<td th:text="${anggota.pekerjaan}">Pekerjaan</td>
+			       	<td th:text="${anggota.status_perkawinan}">Status Perkawinan</td>
+			       	<td th:text="${anggota.status_dalam_keluarga}">Status dalam Keluarga</td>
+			       	<td th:text="${anggota.is_wni} == 1 ? 'WNI' : 'WNA'">Kewarganegaraan</td>
+					      </tr>
+					    </tbody>
+					  </table>
+				</div>
+				<hr />
+			</div>
+			<br />
+			<hr />
+		</div>
+	</div>
+
+
+
+
+</body>
+</html>
+

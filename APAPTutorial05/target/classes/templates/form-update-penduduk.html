@@ -1,0 +1,224 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+
+<title>Pratt - Free Bootstrap 3 Theme</title>
+
+<link th:href="@{/css/bootstrap.css}" rel="stylesheet" />
+<link th:href="@{/css/main.css}" rel="stylesheet" />
+</head>
+
+<body data-spy="scroll" data-offset="0" data-target="#navigation">
+
+
+	<div id="navigation" class="navbar navbar-default navbar-fixed-top">
+		<div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse"
+					data-target=".navbar-collapse">
+					<span class="icon-bar"></span> <span class="icon-bar"></span> <span
+						class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="#"><b>Si Kependudukan</b></a>
+			</div>
+			<div class="navbar-collapse collapse">
+				<ul class="nav navbar-nav">
+					<li class="active"><a href="#home" class="smothscroll">Home</a></li>
+					<li><a href="" class="smothscroll">Cari Data</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+
+
+	<div id="intro">
+		<div class="container">
+			<div class="row centered">
+				<h1>Tambah Keluarga</h1>
+				<br /> <br />
+				<hr />
+	
+	<div class="col-lg-12" style="text-align: left;">
+					<form action="" method="post" th:object="${penduduk}">
+					
+						
+						<div class="form-group" style="margin-left: 10%; margin-right: 10%; text-align:right;">
+							<div class="col-lg-4">
+							<label for="nama">Masukkan Nama  </label> 
+							</div>
+							
+							<div class="col-lg-8" style="margin-bottom: 1%;">
+							<input style="width: 100%;" th:field="*{nama}" type="text" name="nama" th:value="${penduduk.nama}"  />
+							</div>
+						</div>
+						
+						<div class="form-group" style="margin-left: 10%; margin-right: 10%; text-align:right;">
+							<div class="col-lg-4">
+							<label for="id_keluarga">ID Keluarga  </label> 
+							</div>
+							
+							<div class="col-lg-8" style="margin-bottom: 1%;">
+							<input style="width: 100%;" th:field="*{id_keluarga}" type="text" name="id_keluarga" th:value="${penduduk.id_keluarga}"  />
+							</div>
+						</div>
+						
+						<div class="form-group" style="margin-left: 10%; margin-right: 10%; text-align:right;">
+							<div class="col-lg-4">
+							<label for="tempat_lahir">Tempat Lahir  </label> 
+							</div>
+							
+							<div class="col-lg-8" style="margin-bottom: 1%;">
+							<input style="width: 100%;" th:field="*{tempat_lahir}" type="text" name="tempat_lahir" th:value="${penduduk.tempat_lahir}" />
+							</div>
+						</div>
+						
+						<div class="form-group" style="margin-left: 10%; margin-right: 10%; text-align:right;">
+							<div class="col-lg-4">
+							<label for="tanggal_lahir">Tanggal Lahir  </label> 
+							</div>
+							
+							<div class="col-lg-8" style="margin-bottom: 1%;">
+							<input style="width: 100%;" th:field="*{tanggal_lahir}" type="date" name="tanggal_lahir" th:value="${penduduk.tanggal_lahir}" />
+							</div>
+						</div>
+						
+						<div class="form-group" style="margin-left: 10%; margin-right: 10%; text-align:right;">
+							<div class="col-lg-4">
+							<label for="pekerjaan">Pekerjaan  </label> 
+							</div>
+							
+							<div class="col-lg-8" style="margin-bottom: 1%;">
+							<input style="width: 100%;" th:field="*{pekerjaan}" type="text" name="pekerjaan" th:value="${penduduk.pekerjaan}" />
+							</div>
+						</div>
+						
+						<div class="form-group" style="margin-left: 10%; margin-right: 10%; text-align:right;">
+							<div class="col-lg-4">
+							<label for="agama">Agama  </label> 
+							</div>
+							
+							<div class="col-lg-8" style="margin-bottom: 1%;">
+							<input style="width: 100%;" th:field="*{agama}" type="text" name="agama" th:value="${penduduk.agama}" />
+							</div>
+						</div>
+						
+						<div class="form-group" style="margin-left: 10%; margin-right: 10%; text-align:right;">
+							<div class="col-lg-4">
+							<label for="jenis_kelamin">Jenis Kelamin  </label> 
+							</div>
+							
+							<div class="col-lg-8" style="margin-bottom: 1%;">
+							<select class="form-control" name="jenis_kelamin" th:field="*{jenis_kelamin}" th:value="${penduduk.jenis_kelamin}"  >
+								<option  disabled="disabled" th:value="''"></option> 
+						        <option th:value="'0'">Laki-laki</option>
+						        <option th:value="'1'">Perempuan</option>
+						      </select>
+							</div>
+						</div>
+						
+						
+						
+						<div class="form-group" style="margin-left: 10%; margin-right: 10%; text-align:right;">
+							<div class="col-lg-4">
+							<label for="status_perkawinan">Status Perkawinan  </label> 
+							</div>
+							
+							<div class="col-lg-8" style="margin-bottom: 1%;">
+							<select class="form-control"  th:field="*{status_perkawinan}" name="status_perkawinan" th:value="${penduduk.status_perkawinan}" >
+				        <option  disabled="disabled" value=""></option> 
+				        <option th:value="'Belum Kawin'">Belum Kawin</option>
+				        <option th:value="'Kawin'">Kawin</option>
+				      </select>
+							</div>
+						</div>
+						
+						
+						
+						<div class="form-group" style="margin-left: 10%; margin-right: 10%; text-align:right;">
+							<div class="col-lg-4">
+							<label for="golongan_darah">Golongan Darah  </label> 
+							</div>
+							
+							<div class="col-lg-8" style="margin-bottom: 1%;">
+							<select class="form-control" name="golongan_darah" th:field="*{golongan_darah}"  th:value="${penduduk.golongan_darah}" >
+						<option disabled="disabled" value=""></option> 
+				        <option th:value="'A+'">A+</option>
+				        <option th:value="'A-'">A-</option>
+				        <option th:value="'B+'">B+</option>
+				        <option th:value="'B-'">B-</option>
+				        <option th:value="'O+'">O+</option>
+				        <option th:value="'O-'">O-</option>
+				        <option th:value="'AB+'">AB+</option>
+				        <option th:value="'AB-'">AB-</option>
+				      </select>
+							</div>
+						</div>
+						
+						<div class="form-group" style="margin-left: 10%; margin-right: 10%; text-align:right;">
+							<div class="col-lg-4">
+							<label for="is_wni">Kewarganegaraan  </label> 
+							</div>
+							
+							<div class="col-lg-8" style="margin-bottom: 1%;">
+								<select class="form-control" name="is_wni" th:field="*{is_wni}"  th:value="${penduduk.is_wni}" >
+						<option disabled="disabled" th:value="''"></option> 
+				        <option th:value="'1'">WNI</option>
+				        <option th:value="'0'">WNA</option>
+				      </select>
+							</div>
+						</div>
+						
+						<div class="form-group" style="margin-left: 10%; margin-right: 10%; text-align:right;">
+							<div class="col-lg-4">
+							<label for="is_wafat">Status Kematian  </label> 
+							</div>
+							
+							<div class="col-lg-8" style="margin-bottom: 1%;">
+							<select class="form-control"  th:field="*{is_wafat}" name="is_wafat" th:value="${penduduk.is_wafat}" >
+				        <option disabled="disabled" value=""></option> 
+				        <option th:value="'0'">Hidup</option>
+				        <option th:value="'1'">Wafat</option>
+				      </select>
+							</div>
+						</div>
+						
+						<div class="form-group" style="margin-left: 10%; margin-right: 10%; text-align:right;">
+							<div class="col-lg-4">
+							<label for="status_dalam_keluarga">Status dalam Keluarga  </label> 
+							</div>
+							
+							<div class="col-lg-8" style="margin-bottom: 1%;">
+							<select class="form-control" name="status_dalam_keluarga" th:field="*{status_dalam_keluarga}" th:value="${penduduk.status_dalam_keluarga}">
+				       <option disabled="disabled" value=""></option> 
+				        <option th:value="'Kepala Keluarga'">Kepala Keluarga</option>
+				        <option th:value="'Istri'">Istri</option>
+				        <option th:value="'Anak'">Anak</option>
+				      </select>
+							</div>
+						</div>
+						
+						<div class="form-group" style="margin-left: 10%; margin-right: 10%;">
+							<div class="col-lg-4"> 
+							</div>
+							
+							<div class="col-lg-8" style="margin-bottom: 1%;">
+							<button type="submit" class="btn btn-large btn-success">Ubah</button>
+							</div>
+						</div>
+						
+						
+					</form>
+				</div>
+
+				<hr/>
+			</div>
+			<br />
+			<hr />
+		</div>
+	</div>
+
+</body>
+
+</html>
+

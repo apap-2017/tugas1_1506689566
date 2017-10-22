@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+
+
+<title>Pratt - Free Bootstrap 3 Theme</title>
+
+<link th:href="@{/css/bootstrap.css}" rel="stylesheet" />
+<link th:href="@{/css/main.css}" rel="stylesheet" />
+
+</head>
+
+<body data-spy="scroll" data-offset="0" data-target="#navigation">
+
+
+	<div id="navigation" class="navbar navbar-default navbar-fixed-top">
+		<div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse"
+					data-target=".navbar-collapse">
+					<span class="icon-bar"></span> <span class="icon-bar"></span> <span
+						class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="#"><b>Si Kependudukan</b></a>
+			</div>
+			<div class="navbar-collapse collapse">
+				<ul class="nav navbar-nav">
+					<li class="active"><a href="#home" class="smothscroll">Home</a></li>
+					<li><a href="" class="smothscroll">Cari Data</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+
+
+	<div id="intro">
+		<div class="container">
+			<div class="row centered">
+				<h1>Sistem Informasi Kependudukan Online Provinsi DKI Jakarta</h1>
+				<p>Selamat datang di Sistem Informasi Kependudukan Online
+					Provinsi DKI Jakarta</p>
+				<br /> <br />
+				<hr />
+				
+
+				
+				</div>
+				
+				<div class="col-lg-12" style="text-align: center;">
+
+					<h1 th:text="'Lihat Data Penduduk - ' + ${penduduk.nik}"></h1>
+					
+				
+	<table class="table ">
+    
+    <tbody >
+      
+      <tr class="success">
+        <td><h4 th:text="'NIK'">Penduduk NIK</h4></td>
+        <td><h4 th:text="${penduduk.nik}">Penduduk NIK</h4></td>
+      </tr>
+      
+      <tr class="success">
+        <td><h4 th:text="'Nama'">Penduduk NIK</h4></td>
+        <td><h4 th:text="${penduduk.nama}">Penduduk NIK</h4></td>
+      </tr>
+      
+      <tr class="success">
+        <td><h4 th:text="'Tempat/Tanggal Lahir'">Penduduk NIK</h4></td>
+        <td><h4 th:text="${penduduk.tempat_lahir} + ', ' + ${penduduk.tanggal_lahir}">Penduduk NIK</h4></td>
+      </tr>
+      
+      <tr class="success">
+        <td><h4 th:text="'Alamat'">Penduduk NIK</h4></td>
+        <td><h4 th:text="${keluarga.alamat}">Penduduk NIK</h4></td>
+      </tr>
+      
+      <tr class="success">
+        <td><h4 th:text="'RT/RW'">Penduduk NIK</h4></td>
+        <td><h4 th:text="${keluarga.rt} + '/' + ${keluarga.rw}">Penduduk NIK</h4></td>
+      </tr>
+      
+      <tr class="success">
+        <td><h4 th:text="'Kelurahan/Desa'">Penduduk NIK</h4></td>
+        <td><h4 th:text="${keluarga.nama_kelurahan}">Penduduk NIK</h4></td>
+      </tr>
+      
+      <tr class="success">
+        <td><h4 th:text="'Kecamatan'">Penduduk NIK</h4></td>
+        <td><h4 th:text="${keluarga.nama_kecamatan}">Penduduk NIK</h4></td>
+      </tr>
+      
+      <tr class="success">
+        <td><h4 th:text="'Kota'">Penduduk NIK</h4></td>
+        <td><h4 th:text="${keluarga.nama_kota}">Penduduk NIK</h4></td>
+      </tr>
+      
+      <tr class="success">
+        <td><h4 th:text="'Golongan Darah'">Penduduk NIK</h4></td>
+        <td><h4 th:text="${penduduk.golongan_darah}">Penduduk NIK</h4></td>
+      </tr>
+      
+      <tr class="success">
+        <td><h4 th:text="'Agama'">Penduduk NIK</h4></td>
+        <td><h4 th:text="${penduduk.agama}">Penduduk NIK</h4></td>
+      </tr>
+      
+      <tr class="success">
+        <td><h4 th:text="'Status Perkawinan'">Penduduk NIK</h4></td>
+        <td><h4 th:text="${penduduk.status_perkawinan}">Penduduk NIK</h4></td>
+      </tr>
+      
+      <tr class="success">
+        <td><h4 th:text="'Pekerjaan'">Penduduk NIK</h4></td>
+        <td><h4 th:text="${penduduk.pekerjaan}">Penduduk NIK</h4></td>
+      </tr>
+      
+      <tr class="success">
+        <td><h4 th:text="'Kewarganegaraan'">Penduduk NIK</h4></td>
+        <td><h4 th:text="${penduduk.is_wni} == 1 ? 'WNI' : 'Asing'">Penduduk NIK</h4></td>
+      </tr>
+      
+      <tr class="success">
+        <td><h4 th:text="'Status Kematian'">Penduduk NIK</h4></td>
+        <td><h4 th:text="${penduduk.is_wafat} == 1 ? 'Wafat' : 'Hidup'">Penduduk NIK</h4>
+     	 <p th:if="${penduduk.is_wafat} == '0'">
+		  <form action="penduduk/mati" method="post">
+				<input type="hidden" name="nik" th:value="${penduduk.nik}"></input>
+				<button type="submit" class="btn btn-danger">Wafat</button>
+		  </form>	</p>
+	 </td>
+      
+      </tr>
+      
+     
+      
+      
+      
+      
+      
+    </tbody>
+  </table>
+						
+					
+				</div>
+				<hr/>
+				
+			</div>
+			<br />
+			<hr />
+		</div>
+	
+
+
+
+
+</body>
+</html>
+

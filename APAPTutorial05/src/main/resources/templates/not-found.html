@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+
+
+<title>Error</title>
+
+<link th:href="@{/css/bootstrap.css}" rel="stylesheet" />
+<link th:href="@{/css/main.css}" rel="stylesheet" />
+
+</head>
+
+<body data-spy="scroll" data-offset="0" data-target="#navigation">
+
+<div id="navigation" class="navbar navbar-default navbar-fixed-top">
+		<div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse"
+					data-target=".navbar-collapse">
+					<span class="icon-bar"></span> <span class="icon-bar"></span> <span
+						class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="/"><b>Si Kependudukan</b></a>
+			</div>
+			<div class="navbar-collapse collapse">
+				<ul class="nav navbar-nav">
+					<li><a href="/penduduk-page" >Penduduk</a></li>
+					<li><a href="/keluarga-page" >Keluarga</a></li>
+				
+					
+				</ul>
+			</div>
+		</div>
+	</div>
+
+	<div id="intro">
+		<div class="container">
+			<div class="row centered">
+				<h1>ERROR</h1>
+				<h2 th:if="${nik} != null" th:text="'NIK dengan nomor ' + ${nik} + ' tidak ditemukan'"></h2>
+				<h2 th:if="${nomor_kk} != null" th:text="'NKK dengan nomor ' + ${nomor_kk} + ' tidak ditemukan'"></h2>
+				<h2 th:if="${id_kota} == null" th:text="'${id_kota} + ' tidak boleh kosong'"></h2>
+				<h2 th:if="${id_kecamatan} == null" th:text="'${id_kecamatan} + ' tidak boleh kosong'"></h2>
+				<h2 th:if="${id_kelurahan} == null" th:text="'${id_kelurahan} + ' tidak boleh kosong'"></h2>
+			</div>
+			<br />
+			<hr />
+		</div>
+	</div>
+
+
+
+
+</body>
+</html>

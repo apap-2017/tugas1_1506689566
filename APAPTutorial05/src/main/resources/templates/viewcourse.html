@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>View Student by NPM</title>
+    </head>
+    <body>
+       	<h3 th:text="'ID = ' + ${course.id_course}">Student NPM</h3>
+       	<h3 th:text="'Nama = ' + ${course.name}">Student Name</h3>
+       	<h3 th:text="'SKS = ' + ${course.credits}">Student GPA</h3>
+       	
+       	<h3>Mahasiswa yang mengambil</h3>
+       	<ul th:each="student, iterationStatus: ${course.students}">
+       		<li th:text="${student.npm} + '-' + ${student.name}">
+       			Npm mahasiswa-nama mahasiswa
+       		</li>
+       	
+       	</ul>
+    </body>
+</html>
+
