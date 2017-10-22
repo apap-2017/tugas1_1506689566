@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+
+
+<title>Pratt - Free Bootstrap 3 Theme</title>
+
+<link th:href="@{/css/bootstrap.css}" rel="stylesheet" />
+<link th:href="@{/css/main.css}" rel="stylesheet" />
+<link rel="stylesheet" type="text/css"
+		href="https://cdn.datatables.net/1.10.16/css/dataTables.bootstrap4.min.css" />
+	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+	<script type="text/javascript" charset="utf8"
+		src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+	<script type="text/javascript" charset="utf8"
+		src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap4.min.js"></script>
+	<script type="text/javascript" charset="utf8"
+		src="https://cdn.datatables.net/responsive/2.2.0/js/dataTables.responsive.min.js"></script>
+	<script type="text/javascript" charset="utf8"
+		src="https://cdn.datatables.net/responsive/2.2.0/js/responsive.bootstrap4.min.js"></script>
+</head>
+
+<body data-spy="scroll" data-offset="0" data-target="#navigation">
+
+
+	<div id="navigation" class="navbar navbar-default navbar-fixed-top">
+		<div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse"
+					data-target=".navbar-collapse">
+					<span class="icon-bar"></span> <span class="icon-bar"></span> <span
+						class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="#"><b>Si Kependudukan</b></a>
+			</div>
+			<div class="navbar-collapse collapse">
+				<ul class="nav navbar-nav">
+					<li class="active"><a href="#home" class="smothscroll">Home</a></li>
+					<li><a href="" class="smothscroll">Cari Data</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+
+
+	<div id="intro">
+		<div class="container">
+			<div class="row centered">
+				
+				<br /> 
+				<hr />
+				
+				<div  class="col-lg-12" style="text-align: left;">
+				<div >
+					<h3 style="position: absolute; margin-top:-5%;">Lihat Keluarga yang Sudah Tidak Berlaku </h3>
+				</div>
+				
+					<form action="" method="get" >
+						<div class="col-lg-12">
+						<table id="allPenduduk" class="table table-bordered table-striped dt-responsive nowrap display">
+    					<thead>
+    						<tr>
+    							<th>No.</th>
+    							<th>NKK</th>
+    							<th>Alamat</th>
+    						</tr>
+    					</thead>
+					    <tbody>
+					      <tr  class="success" th:each="keluarga, iterationStatus: ${kk_not_valid}">
+
+					        <td th:text="${iterationStatus.count}">No. 1</td>
+			       	<td th:text="${keluarga.nomor_kk}">Nomor KK</td>
+			       	<td th:text="${keluarga.alamat}">Alamat</td>
+			       
+					      </tr>
+					    </tbody>
+					  </table>
+				</div>
+				
+						
+						
+						
+						
+						
+					</form>
+				</div>
+				<hr/>
+			</div>
+			<br />
+			<hr />
+		</div>
+	</div>
+
+
+
+
+</body>
+ <script>
+	$(document).ready(function() {
+		$('#allPenduduk').DataTable({
+			"pagingType": "full_numbers"
+		});
+	});
+	</script>
+</html>
+
+
+

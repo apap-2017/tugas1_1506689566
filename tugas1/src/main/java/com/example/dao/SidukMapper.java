@@ -175,7 +175,7 @@ public interface SidukMapper
 	 		+ "where p.id_keluarga=klg.id AND klg.id_kelurahan=kl.id and "
 	 		+ "kl.id_kecamatan=kc.id and kc.id=#{id_kecamatan} "
 	 		+ "ORDER BY tanggal_lahir ASC LIMIT 1")
-		PendudukModel selectTuaDiKecamatan(@Param("id_kecamatan")int id_kecamatan);
+		PendudukModel selectPendudukTuaDiKecamatan(@Param("id_kecamatan")int id_kecamatan);
 	 
 //bonus cari termuda di kelurahan
 	 
@@ -190,10 +190,19 @@ public interface SidukMapper
 	 		+ "where p.id_keluarga=klg.id AND klg.id_kelurahan=kl.id and "
 	 		+ "kl.id_kecamatan=kc.id and kc.id=#{id_kecamatan} "
 	 		+ "ORDER BY tanggal_lahir DESC LIMIT 1")
-		PendudukModel selectMudaDiKecamatan(@Param("id_kecamatan")int id_kecamatan);
+		PendudukModel selectPendudukMudaDiKecamatan(@Param("id_kecamatan")int id_kecamatan);
 	 
+	//cari nomor kk yang sudah tidak berlaku
+	 
+	 @Select("select * from keluarga where is_tidak_berlaku=1")
+	 List<KeluargaModel> kkTidakValid();
 	
-	
-	
+	 //cari nama kepala keluarga di suatu kelurahan
+	 
+	 @Select("select p.nik, p.nama, p.status_dalam_keluarga "
+	 		+ "from penduduk p, keluarga klg, kelurahan kl "
+	 		+ "where p.status_dalam_keluarga like 'Kepala Keluarga' and p.id_keluarga = klg.id and klg.id_kelurahan = kl.id "
+	 		+ "order by p.tanggal_lahir asc limit 50")
+	List<PendudukModel> selectKepalaKeluarga();
 	   
 }

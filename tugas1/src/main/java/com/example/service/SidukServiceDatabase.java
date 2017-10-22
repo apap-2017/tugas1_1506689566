@@ -29,6 +29,20 @@ public class SidukServiceDatabase implements SidukService
         return sidukMapper.selectPenduduk (nik);
     }
     
+    @Override
+    public List<KeluargaModel> kkTidakValid ()
+    {
+        log.info ("select keluarga yang sudah tidak valid");
+        return sidukMapper.kkTidakValid();
+    }
+    
+    @Override
+    public List<PendudukModel> selectKepalaKeluarga ()
+    {
+        log.info ("select kepala keluarga");
+        return sidukMapper.selectKepalaKeluarga();
+    }
+    
    
     @Override
     public KeluargaModel alamatLengkap (int id)

@@ -42,6 +42,76 @@ public class SidukController
         return "penduduk-page";
     }
     
+    @RequestMapping("/kk-tidak-valid")
+    public String kkTidakValid (Model model)
+    {
+    	List<KeluargaModel> kk_not_valid = sidukDAO.kkTidakValid();
+    	model.addAttribute("kk_not_valid", kk_not_valid);
+    	for (int i = 0; i < kk_not_valid.size(); i++) {
+    		KeluargaModel klg = kk_not_valid.get(i);
+    		model.addAttribute("keluarga", klg);
+    	}
+        return "keluarga-tidak-valid";
+    }
+    
+    @RequestMapping(value = "/kepala-keluarga")
+	 public String cariKepalaKeluarga (Model model,
+			 @RequestParam(value = "kt", defaultValue = "0") int id_kota,
+	         @RequestParam(value = "kc", defaultValue = "0") int id_kecamatan,
+	         @RequestParam(value = "kl", defaultValue = "0") int id_kelurahan){
+   	
+   	List<KotaModel> select_kota = sidukDAO.selectAllKota();
+   	model.addAttribute("kota_list", select_kota);
+   	
+   	if (id_kota != 0) {
+   		model.addAttribute("id_kota", id_kota);
+   		for (int i = 0; i < select_kota.size() ; i++) {
+   			if(id_kota == select_kota.get(i).getId()) {
+   				String nama_kota = select_kota.get(i).getNama_kota();
+   				model.addAttribute("nama_kota", nama_kota);
+   			}
+   		}
+   		
+   		List<KecamatanModel> select_kecamatan = sidukDAO.selectKecamatanByIdKota(id_kota);
+   		model.addAttribute("kecamatan_list", select_kecamatan);
+   		for (int i = 0; i < select_kecamatan.size() ; i++) {
+   			if(id_kecamatan == select_kecamatan.get(i).getId()) {
+   				String nama_kecamatan = select_kecamatan.get(i).getNama_kecamatan();
+   				model.addAttribute("nama_kecamatan", nama_kecamatan);
+   			}
+   		}
+   		
+   		
+   	}
+   	
+   	if (id_kecamatan != 0) {
+   		model.addAttribute("id_kecamatan", id_kecamatan);
+   		List<KelurahanModel> select_kelurahan = sidukDAO.selectKelurahanByIdKecamatan(id_kecamatan);
+   		model.addAttribute("kelurahan_list", select_kelurahan);
+   		for (int i = 0; i < select_kelurahan.size() ; i++) {
+   			if(id_kelurahan == select_kelurahan.get(i).getId()) {
+   				String nama_kelurahan = select_kelurahan.get(i).getNama_kelurahan();
+   				model.addAttribute("nama_kelurahan", nama_kelurahan);
+   			}
+   		}
+   		List<PendudukModel> kepala_keluarga = sidukDAO.selectKepalaKeluarga();
+   		model.addAttribute("kepala_keluarga", kepala_keluarga);
+   		for (int i = 0; i < kepala_keluarga.size(); i++) {
+   			PendudukModel kepala = kepala_keluarga.get(i);
+   			model.addAttribute("kepala", kepala);
+   		}
+   	}
+   	
+   	
+   	
+    return "kepala-keluarga";
+		
+   	
+   }
+
+    
+
+    
     @RequestMapping("/keluarga-page")
     public String keluargaPage ()
     {
@@ -494,7 +564,6 @@ public class SidukController
    	if(id_kecamatan != 0) {
    		model.addAttribute("id_kecamatan", id_kecamatan);
    	}
-  
    		PendudukModel tua_kc = sidukDAO.selectPendudukTuaByIdKecamatan(id_kecamatan);
 		PendudukModel muda_kc = sidukDAO.selectPendudukMudaByIdKecamatan(id_kecamatan);
 	

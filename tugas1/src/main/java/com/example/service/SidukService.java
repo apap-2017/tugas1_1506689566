@@ -22,6 +22,8 @@ public interface SidukService
     
     int maxIdKeluarga();
     
+    List<KeluargaModel> kkTidakValid();
+    
     List<PendudukModel> selectAnggotaKeluarga (int id_keluarga);
     
     List<KotaModel> selectAllKota();
@@ -62,6 +64,7 @@ public interface SidukService
 	
     PendudukModel selectPendudukMudaByIdKecamatan(int id_kecamatan);
    
+    List<PendudukModel> selectKepalaKeluarga();
     
 //
 //
